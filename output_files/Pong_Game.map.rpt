@@ -1,0 +1,774 @@
+Analysis & Synthesis report for Pong_Game
+Mon Feb 28 18:02:52 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Pong_Game|Ball_Position:Ball_Y|next_state
+  9. State Machine - |Pong_Game|Ball_Position:Ball_Y|r_state
+ 10. State Machine - |Pong_Game|Ball_Position:Ball_X|next_state
+ 11. State Machine - |Pong_Game|Ball_Position:Ball_X|r_state
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: Top-level Entity: |Pong_Game
+ 17. Parameter Settings for User Entity Instance: Check_Key:A_D_KEYS
+ 18. Parameter Settings for User Entity Instance: Check_Key:W_S_KEYS
+ 19. Parameter Settings for User Entity Instance: Check_Key:J_L_KEYS
+ 20. Parameter Settings for User Entity Instance: Check_Key:I_K_KEYS
+ 21. Parameter Settings for User Entity Instance: Paddle_Position:Paddle_1_X
+ 22. Parameter Settings for User Entity Instance: Paddle_Position:Paddle_1_Y
+ 23. Parameter Settings for User Entity Instance: Paddle_Position:Paddle_2_X
+ 24. Parameter Settings for User Entity Instance: Paddle_Position:Paddle_2_Y
+ 25. Parameter Settings for User Entity Instance: Ball_Position:Ball_X
+ 26. Parameter Settings for User Entity Instance: Ball_Position:Ball_Y
+ 27. Port Connectivity Checks: "Ball_Position:Ball_Y"
+ 28. Port Connectivity Checks: "Check_Key:I_K_KEYS"
+ 29. Port Connectivity Checks: "Check_Key:J_L_KEYS"
+ 30. Port Connectivity Checks: "Check_Key:W_S_KEYS"
+ 31. Port Connectivity Checks: "ps2_rx:ps2_rx_unit"
+ 32. Post-Synthesis Netlist Statistics for Top Partition
+ 33. Elapsed Time Per Partition
+ 34. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Feb 28 18:02:52 2022       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; Pong_Game                                   ;
+; Top-level Entity Name           ; Pong_Game                                   ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 526                                         ;
+; Total pins                      ; 33                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; Pong_Game          ; Pong_Game          ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 12          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                     ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                       ; Library ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------+---------+
+; ps2_rx.v                         ; yes             ; User Verilog HDL File  ; C:/intelFPGA_lite/20.1/Pong_Game/ps2_rx.v          ;         ;
+; Paddle_Position.v                ; yes             ; User Verilog HDL File  ; C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v ;         ;
+; key2ascii.v                      ; yes             ; User Verilog HDL File  ; C:/intelFPGA_lite/20.1/Pong_Game/key2ascii.v       ;         ;
+; Clock_Div.v                      ; yes             ; User Verilog HDL File  ; C:/intelFPGA_lite/20.1/Pong_Game/Clock_Div.v       ;         ;
+; Check_Key.v                      ; yes             ; User Verilog HDL File  ; C:/intelFPGA_lite/20.1/Pong_Game/Check_Key.v       ;         ;
+; Ball_Position.v                  ; yes             ; User Verilog HDL File  ; C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v   ;         ;
+; Pong_Game.v                      ; yes             ; User Verilog HDL File  ; C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v       ;         ;
++----------------------------------+-----------------+------------------------+----------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                 ;
++---------------------------------------------+-------------------------------+
+; Resource                                    ; Usage                         ;
++---------------------------------------------+-------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 677                           ;
+;                                             ;                               ;
+; Combinational ALUT usage for logic          ; 1092                          ;
+;     -- 7 input functions                    ; 12                            ;
+;     -- 6 input functions                    ; 247                           ;
+;     -- 5 input functions                    ; 69                            ;
+;     -- 4 input functions                    ; 39                            ;
+;     -- <=3 input functions                  ; 725                           ;
+;                                             ;                               ;
+; Dedicated logic registers                   ; 526                           ;
+;                                             ;                               ;
+; I/O pins                                    ; 33                            ;
+;                                             ;                               ;
+; Total DSP Blocks                            ; 0                             ;
+;                                             ;                               ;
+; Maximum fan-out node                        ; Clock_Div:Clock_25MHz|r_Clock ;
+; Maximum fan-out                             ; 478                           ;
+; Total fan-out                               ; 5551                          ;
+; Average fan-out                             ; 3.30                          ;
++---------------------------------------------+-------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                               ;
++---------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                   ; Entity Name     ; Library Name ;
++---------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-----------------+--------------+
+; |Pong_Game                      ; 1092 (365)          ; 526 (22)                  ; 0                 ; 0          ; 33   ; 0            ; |Pong_Game                            ; Pong_Game       ; work         ;
+;    |Ball_Position:Ball_X|       ; 141 (141)           ; 78 (78)                   ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Ball_Position:Ball_X       ; Ball_Position   ; work         ;
+;    |Ball_Position:Ball_Y|       ; 129 (129)           ; 76 (76)                   ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Ball_Position:Ball_Y       ; Ball_Position   ; work         ;
+;    |Check_Key:A_D_KEYS|         ; 6 (6)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Check_Key:A_D_KEYS         ; Check_Key       ; work         ;
+;    |Check_Key:I_K_KEYS|         ; 6 (6)               ; 18 (18)                   ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Check_Key:I_K_KEYS         ; Check_Key       ; work         ;
+;    |Check_Key:J_L_KEYS|         ; 4 (4)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Check_Key:J_L_KEYS         ; Check_Key       ; work         ;
+;    |Check_Key:W_S_KEYS|         ; 3 (3)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Check_Key:W_S_KEYS         ; Check_Key       ; work         ;
+;    |Clock_Div:Clock_25MHz|      ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Clock_Div:Clock_25MHz      ; Clock_Div       ; work         ;
+;    |Paddle_Position:Paddle_1_X| ; 100 (100)           ; 75 (75)                   ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Paddle_Position:Paddle_1_X ; Paddle_Position ; work         ;
+;    |Paddle_Position:Paddle_1_Y| ; 99 (99)             ; 75 (75)                   ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Paddle_Position:Paddle_1_Y ; Paddle_Position ; work         ;
+;    |Paddle_Position:Paddle_2_X| ; 101 (101)           ; 75 (75)                   ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Paddle_Position:Paddle_2_X ; Paddle_Position ; work         ;
+;    |Paddle_Position:Paddle_2_Y| ; 99 (99)             ; 75 (75)                   ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|Paddle_Position:Paddle_2_Y ; Paddle_Position ; work         ;
+;    |key2ascii:k2a_unit|         ; 27 (27)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|key2ascii:k2a_unit         ; key2ascii       ; work         ;
+;    |ps2_rx:ps2_rx_unit|         ; 11 (11)             ; 24 (24)                   ; 0                 ; 0          ; 0    ; 0            ; |Pong_Game|ps2_rx:ps2_rx_unit         ; ps2_rx          ; work         ;
++---------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------+-----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------+
+; State Machine - |Pong_Game|Ball_Position:Ball_Y|next_state ;
++-----------------+------------------------------------------+
+; Name            ; next_state.PLAY                          ;
++-----------------+------------------------------------------+
+; next_state.IDLE ; 0                                        ;
+; next_state.PLAY ; 1                                        ;
++-----------------+------------------------------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------+
+; State Machine - |Pong_Game|Ball_Position:Ball_Y|r_state ;
++--------------+------------------------------------------+
+; Name         ; r_state.PLAY                             ;
++--------------+------------------------------------------+
+; r_state.IDLE ; 0                                        ;
+; r_state.PLAY ; 1                                        ;
++--------------+------------------------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------+
+; State Machine - |Pong_Game|Ball_Position:Ball_X|next_state ;
++-----------------+------------------------------------------+
+; Name            ; next_state.PLAY                          ;
++-----------------+------------------------------------------+
+; next_state.IDLE ; 0                                        ;
+; next_state.PLAY ; 1                                        ;
++-----------------+------------------------------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------+
+; State Machine - |Pong_Game|Ball_Position:Ball_X|r_state ;
++--------------+------------------------------------------+
+; Name         ; r_state.PLAY                             ;
++--------------+------------------------------------------+
+; r_state.IDLE ; 0                                        ;
+; r_state.PLAY ; 1                                        ;
++--------------+------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                        ;
++----------------------------------------+--------------------------------------------------+
+; Register name                          ; Reason for Removal                               ;
++----------------------------------------+--------------------------------------------------+
+; Check_Key:A_D_KEYS|r_kbd_data[5]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[5]     ;
+; Check_Key:W_S_KEYS|r_kbd_data[5]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[5]     ;
+; Check_Key:J_L_KEYS|r_kbd_data[5]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[5]     ;
+; Check_Key:A_D_KEYS|r_kbd_data[4]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[4]     ;
+; Check_Key:W_S_KEYS|r_kbd_data[4]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[4]     ;
+; Check_Key:J_L_KEYS|r_kbd_data[4]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[4]     ;
+; Check_Key:A_D_KEYS|r_kbd_data[3]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[3]     ;
+; Check_Key:W_S_KEYS|r_kbd_data[3]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[3]     ;
+; Check_Key:J_L_KEYS|r_kbd_data[3]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[3]     ;
+; Check_Key:A_D_KEYS|r_kbd_data[2]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[2]     ;
+; Check_Key:W_S_KEYS|r_kbd_data[2]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[2]     ;
+; Check_Key:J_L_KEYS|r_kbd_data[2]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[2]     ;
+; Check_Key:A_D_KEYS|r_kbd_data[0]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[0]     ;
+; Check_Key:W_S_KEYS|r_kbd_data[0]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[0]     ;
+; Check_Key:J_L_KEYS|r_kbd_data[0]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[0]     ;
+; Check_Key:A_D_KEYS|r_kbd_data[1]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[1]     ;
+; Check_Key:W_S_KEYS|r_kbd_data[1]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[1]     ;
+; Check_Key:J_L_KEYS|r_kbd_data[1]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[1]     ;
+; Check_Key:A_D_KEYS|r_kbd_data[6]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[6]     ;
+; Check_Key:W_S_KEYS|r_kbd_data[6]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[6]     ;
+; Check_Key:J_L_KEYS|r_kbd_data[6]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[6]     ;
+; Check_Key:A_D_KEYS|r_kbd_data[7]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[7]     ;
+; Check_Key:W_S_KEYS|r_kbd_data[7]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[7]     ;
+; Check_Key:J_L_KEYS|r_kbd_data[7]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[7]     ;
+; Check_Key:A_D_KEYS|r_kbd_data[8]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[8]     ;
+; Check_Key:W_S_KEYS|r_kbd_data[8]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[8]     ;
+; Check_Key:J_L_KEYS|r_kbd_data[8]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[8]     ;
+; Check_Key:A_D_KEYS|r_kbd_data[9]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[9]     ;
+; Check_Key:W_S_KEYS|r_kbd_data[9]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[9]     ;
+; Check_Key:J_L_KEYS|r_kbd_data[9]       ; Merged with Check_Key:I_K_KEYS|r_kbd_data[9]     ;
+; Check_Key:A_D_KEYS|r_kbd_data[10]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[10]    ;
+; Check_Key:W_S_KEYS|r_kbd_data[10]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[10]    ;
+; Check_Key:J_L_KEYS|r_kbd_data[10]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[10]    ;
+; Check_Key:A_D_KEYS|r_kbd_data[11]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[11]    ;
+; Check_Key:W_S_KEYS|r_kbd_data[11]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[11]    ;
+; Check_Key:J_L_KEYS|r_kbd_data[11]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[11]    ;
+; Check_Key:A_D_KEYS|r_kbd_data[12]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[12]    ;
+; Check_Key:W_S_KEYS|r_kbd_data[12]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[12]    ;
+; Check_Key:J_L_KEYS|r_kbd_data[12]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[12]    ;
+; Check_Key:A_D_KEYS|r_kbd_data[13]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[13]    ;
+; Check_Key:W_S_KEYS|r_kbd_data[13]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[13]    ;
+; Check_Key:J_L_KEYS|r_kbd_data[13]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[13]    ;
+; Check_Key:A_D_KEYS|r_kbd_data[14]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[14]    ;
+; Check_Key:W_S_KEYS|r_kbd_data[14]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[14]    ;
+; Check_Key:J_L_KEYS|r_kbd_data[14]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[14]    ;
+; Check_Key:A_D_KEYS|r_kbd_data[15]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[15]    ;
+; Check_Key:W_S_KEYS|r_kbd_data[15]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[15]    ;
+; Check_Key:J_L_KEYS|r_kbd_data[15]      ; Merged with Check_Key:I_K_KEYS|r_kbd_data[15]    ;
+; Ball_Position:Ball_Y|next_state~4      ; Lost fanout                                      ;
+; Ball_Position:Ball_Y|r_state~5         ; Lost fanout                                      ;
+; Ball_Position:Ball_X|next_state~4      ; Lost fanout                                      ;
+; Ball_Position:Ball_X|r_state~5         ; Lost fanout                                      ;
+; Ball_Position:Ball_Y|r_state.PLAY      ; Merged with Ball_Position:Ball_X|r_state.PLAY    ;
+; Ball_Position:Ball_Y|next_state.PLAY   ; Merged with Ball_Position:Ball_X|next_state.PLAY ;
+; Total Number of Removed Registers = 54 ;                                                  ;
++----------------------------------------+--------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 526   ;
+; Number of registers using Synchronous Clear  ; 406   ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 24    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 488   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; Ball_Position:Ball_X|r_Pos[0]           ; 11      ;
+; Paddle_Position:Paddle_1_X|r_Pos[0]     ; 5       ;
+; Paddle_Position:Paddle_2_X|r_Pos[0]     ; 5       ;
+; Ball_Position:Ball_Y|r_Pos[4]           ; 7       ;
+; Ball_Position:Ball_Y|r_Direction        ; 16      ;
+; Ball_Position:Ball_Y|r_Pos[8]           ; 7       ;
+; Ball_Position:Ball_X|r_Pos[8]           ; 9       ;
+; Ball_Position:Ball_X|r_Pos[4]           ; 9       ;
+; Ball_Position:Ball_X|r_Pos[3]           ; 9       ;
+; Ball_Position:Ball_X|r_Pos[7]           ; 9       ;
+; Ball_Position:Ball_X|r_Pos[6]           ; 9       ;
+; Ball_Position:Ball_X|r_Direction        ; 17      ;
+; Paddle_Position:Paddle_1_Y|r_Pos[4]     ; 5       ;
+; Paddle_Position:Paddle_1_Y|r_Pos[8]     ; 5       ;
+; Paddle_Position:Paddle_1_X|r_Pos[8]     ; 5       ;
+; Paddle_Position:Paddle_1_X|r_Pos[4]     ; 5       ;
+; Paddle_Position:Paddle_2_X|r_Pos[9]     ; 5       ;
+; Paddle_Position:Paddle_2_X|r_Pos[7]     ; 5       ;
+; Paddle_Position:Paddle_2_X|r_Pos[5]     ; 5       ;
+; Paddle_Position:Paddle_2_Y|r_Pos[8]     ; 5       ;
+; Paddle_Position:Paddle_2_Y|r_Pos[4]     ; 5       ;
+; Total number of inverted registers = 21 ;         ;
++-----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; 3:1                ; 11 bits   ; 22 LEs        ; 0 LEs                ; 22 LEs                 ; Yes        ; |Pong_Game|contvidv[6]                         ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Pong_Game|Paddle_Position:Paddle_1_X|r_Pos[2] ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |Pong_Game|Paddle_Position:Paddle_1_Y|r_Pos[5] ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |Pong_Game|Paddle_Position:Paddle_2_X|r_Pos[2] ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |Pong_Game|Paddle_Position:Paddle_2_Y|r_Pos[7] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Pong_Game|ps2_rx:ps2_rx_unit|n_reg[0]         ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 0 LEs                ; 128 LEs                ; Yes        ; |Pong_Game|Ball_Position:Ball_Y|r_Count_Inv[6] ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 0 LEs                ; 128 LEs                ; Yes        ; |Pong_Game|Ball_Position:Ball_Y|r_Count[16]    ;
+; 7:1                ; 32 bits   ; 128 LEs       ; 0 LEs                ; 128 LEs                ; Yes        ; |Pong_Game|Ball_Position:Ball_X|r_Count_Inv[5] ;
+; 7:1                ; 32 bits   ; 128 LEs       ; 0 LEs                ; 128 LEs                ; Yes        ; |Pong_Game|Ball_Position:Ball_X|r_Count[16]    ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |Pong_Game|Ball_Position:Ball_Y|r_Pos[5]       ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Pong_Game|Ball_Position:Ball_Y|r_Pos[10]      ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 9 LEs                ; 6 LEs                  ; Yes        ; |Pong_Game|Ball_Position:Ball_X|r_Pos[2]       ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; Yes        ; |Pong_Game|Ball_Position:Ball_X|r_Pos[9]       ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Pong_Game|Paddle_Position:Paddle_1_X|r_Pos[0] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Pong_Game|Paddle_Position:Paddle_1_Y|r_Pos[4] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Pong_Game|Paddle_Position:Paddle_2_X|r_Pos[0] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Pong_Game|Paddle_Position:Paddle_2_Y|r_Pos[4] ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 9 LEs                ; 6 LEs                  ; Yes        ; |Pong_Game|Ball_Position:Ball_X|r_Pos[4]       ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 9 LEs                ; 6 LEs                  ; Yes        ; |Pong_Game|Ball_Position:Ball_X|r_Pos[6]       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |Pong_Game ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; TOTAL_COL      ; 800   ; Signed Integer                                   ;
+; TOTAL_ROW      ; 525   ; Signed Integer                                   ;
+; ACTIVE_COL     ; 640   ; Signed Integer                                   ;
+; ACTIVE_ROW     ; 480   ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Check_Key:A_D_KEYS ;
++----------------+----------+-------------------------------------+
+; Parameter Name ; Value    ; Type                                ;
++----------------+----------+-------------------------------------+
+; KEY1           ; 01100001 ; Unsigned Binary                     ;
+; KEY2           ; 01100100 ; Unsigned Binary                     ;
++----------------+----------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Check_Key:W_S_KEYS ;
++----------------+----------+-------------------------------------+
+; Parameter Name ; Value    ; Type                                ;
++----------------+----------+-------------------------------------+
+; KEY1           ; 01110111 ; Unsigned Binary                     ;
+; KEY2           ; 01110011 ; Unsigned Binary                     ;
++----------------+----------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Check_Key:J_L_KEYS ;
++----------------+----------+-------------------------------------+
+; Parameter Name ; Value    ; Type                                ;
++----------------+----------+-------------------------------------+
+; KEY1           ; 01101010 ; Unsigned Binary                     ;
+; KEY2           ; 01101100 ; Unsigned Binary                     ;
++----------------+----------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Check_Key:I_K_KEYS ;
++----------------+----------+-------------------------------------+
+; Parameter Name ; Value    ; Type                                ;
++----------------+----------+-------------------------------------+
+; KEY1           ; 01101001 ; Unsigned Binary                     ;
+; KEY2           ; 01101011 ; Unsigned Binary                     ;
++----------------+----------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Paddle_Position:Paddle_1_X ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; pos_MAX        ; 774   ; Signed Integer                                 ;
+; pos_MIN        ; 153   ; Signed Integer                                 ;
+; origin         ; 273   ; Signed Integer                                 ;
+; Paddle_Speed   ; 80000 ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Paddle_Position:Paddle_1_Y ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; pos_MAX        ; 485   ; Signed Integer                                 ;
+; pos_MIN        ; 65    ; Signed Integer                                 ;
+; origin         ; 272   ; Signed Integer                                 ;
+; Paddle_Speed   ; 80000 ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Paddle_Position:Paddle_2_X ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; pos_MAX        ; 774   ; Signed Integer                                 ;
+; pos_MIN        ; 153   ; Signed Integer                                 ;
+; origin         ; 673   ; Signed Integer                                 ;
+; Paddle_Speed   ; 80000 ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Paddle_Position:Paddle_2_Y ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; pos_MAX        ; 485   ; Signed Integer                                 ;
+; pos_MIN        ; 65    ; Signed Integer                                 ;
+; origin         ; 272   ; Signed Integer                                 ;
+; Paddle_Speed   ; 80000 ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Ball_Position:Ball_X ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; pos_MAX        ; 774   ; Signed Integer                           ;
+; pos_MIN        ; 153   ; Signed Integer                           ;
+; origin         ; 473   ; Signed Integer                           ;
+; Ball_Speed     ; 90000 ; Signed Integer                           ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Ball_Position:Ball_Y ;
++----------------+-------+------------------------------------------+
+; Parameter Name ; Value ; Type                                     ;
++----------------+-------+------------------------------------------+
+; pos_MAX        ; 485   ; Signed Integer                           ;
+; pos_MIN        ; 65    ; Signed Integer                           ;
+; origin         ; 272   ; Signed Integer                           ;
+; Ball_Speed     ; 90000 ; Signed Integer                           ;
++----------------+-------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "Ball_Position:Ball_Y"          ;
++--------------+--------+----------+------------------------+
+; Port         ; Type   ; Severity ; Details                ;
++--------------+--------+----------+------------------------+
+; i_Paddle_Hit ; Input  ; Info     ; Stuck at GND           ;
+; o_Direction  ; Output ; Info     ; Explicitly unconnected ;
++--------------+--------+----------+------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "Check_Key:I_K_KEYS"       ;
++---------+--------+----------+------------------------+
+; Port    ; Type   ; Severity ; Details                ;
++---------+--------+----------+------------------------+
+; o_Space ; Output ; Info     ; Explicitly unconnected ;
++---------+--------+----------+------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "Check_Key:J_L_KEYS"       ;
++---------+--------+----------+------------------------+
+; Port    ; Type   ; Severity ; Details                ;
++---------+--------+----------+------------------------+
+; o_Space ; Output ; Info     ; Explicitly unconnected ;
++---------+--------+----------+------------------------+
+
+
++------------------------------------------------------+
+; Port Connectivity Checks: "Check_Key:W_S_KEYS"       ;
++---------+--------+----------+------------------------+
+; Port    ; Type   ; Severity ; Details                ;
++---------+--------+----------+------------------------+
+; o_Space ; Output ; Info     ; Explicitly unconnected ;
++---------+--------+----------+------------------------+
+
+
++------------------------------------------------+
+; Port Connectivity Checks: "ps2_rx:ps2_rx_unit" ;
++-------+-------+----------+---------------------+
+; Port  ; Type  ; Severity ; Details             ;
++-------+-------+----------+---------------------+
+; rx_en ; Input ; Info     ; Stuck at VCC        ;
++-------+-------+----------+---------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 526                         ;
+;     CLR               ; 10                          ;
+;     ENA               ; 79                          ;
+;     ENA CLR           ; 14                          ;
+;     ENA SCLR          ; 395                         ;
+;     SCLR              ; 11                          ;
+;     plain             ; 17                          ;
+; arriav_lcell_comb     ; 1094                        ;
+;     arith             ; 660                         ;
+;         0 data inputs ; 14                          ;
+;         1 data inputs ; 589                         ;
+;         2 data inputs ; 57                          ;
+;     extend            ; 12                          ;
+;         7 data inputs ; 12                          ;
+;     normal            ; 422                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 14                          ;
+;         2 data inputs ; 42                          ;
+;         3 data inputs ; 10                          ;
+;         4 data inputs ; 39                          ;
+;         5 data inputs ; 69                          ;
+;         6 data inputs ; 247                         ;
+; boundary_port         ; 33                          ;
+;                       ;                             ;
+; Max LUT depth         ; 7.10                        ;
+; Average LUT depth     ; 3.94                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Mon Feb 28 18:02:42 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Pong_Game -c Pong_Game
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file ps2_rx.v
+    Info (12023): Found entity 1: ps2_rx File: C:/intelFPGA_lite/20.1/Pong_Game/ps2_rx.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file paddle_position.v
+    Info (12023): Found entity 1: Paddle_Position File: C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file key2ascii.v
+    Info (12023): Found entity 1: key2ascii File: C:/intelFPGA_lite/20.1/Pong_Game/key2ascii.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file clock_div.v
+    Info (12023): Found entity 1: Clock_Div File: C:/intelFPGA_lite/20.1/Pong_Game/Clock_Div.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file check_key.v
+    Info (12023): Found entity 1: Check_Key File: C:/intelFPGA_lite/20.1/Pong_Game/Check_Key.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file ball_position.v
+    Info (12023): Found entity 1: Ball_Position File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file pong_game.v
+    Info (12023): Found entity 1: Pong_Game File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 15
+Warning (10236): Verilog HDL Implicit Net warning at Pong_Game.v(323): created implicit net for "Ball_En" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 323
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(39): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 39
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(40): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 40
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(41): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 41
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(42): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 42
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(45): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 45
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(46): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 46
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(47): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 47
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(48): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 48
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(49): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 49
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(51): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 51
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(52): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 52
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(53): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 53
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(54): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 54
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(55): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 55
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(56): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 56
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(60): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 60
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(61): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 61
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(62): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 62
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(63): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 63
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(65): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 65
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(66): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 66
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(67): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 67
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(68): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 68
+Warning (10222): Verilog HDL Parameter Declaration warning at Pong_Game.v(70): Parameter Declaration in module "Pong_Game" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 70
+Info (12127): Elaborating entity "Pong_Game" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at Pong_Game.v(299): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 299
+Warning (10230): Verilog HDL assignment warning at Pong_Game.v(317): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 317
+Warning (10034): Output port "o_Sync" at Pong_Game.v(30) has no driver File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 30
+Info (12128): Elaborating entity "Clock_Div" for hierarchy "Clock_Div:Clock_25MHz" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 138
+Info (12128): Elaborating entity "ps2_rx" for hierarchy "ps2_rx:ps2_rx_unit" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 145
+Warning (10230): Verilog HDL assignment warning at ps2_rx.v(89): truncated value with size 32 to match size of target (4) File: C:/intelFPGA_lite/20.1/Pong_Game/ps2_rx.v Line: 89
+Info (12128): Elaborating entity "key2ascii" for hierarchy "key2ascii:k2a_unit" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 149
+Info (12128): Elaborating entity "Check_Key" for hierarchy "Check_Key:A_D_KEYS" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 165
+Info (12128): Elaborating entity "Check_Key" for hierarchy "Check_Key:W_S_KEYS" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 178
+Info (12128): Elaborating entity "Check_Key" for hierarchy "Check_Key:J_L_KEYS" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 191
+Info (12128): Elaborating entity "Check_Key" for hierarchy "Check_Key:I_K_KEYS" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 204
+Info (12128): Elaborating entity "Paddle_Position" for hierarchy "Paddle_Position:Paddle_1_X" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 217
+Warning (10230): Verilog HDL assignment warning at Paddle_Position.v(18): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v Line: 18
+Warning (10230): Verilog HDL assignment warning at Paddle_Position.v(38): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v Line: 38
+Warning (10230): Verilog HDL assignment warning at Paddle_Position.v(53): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v Line: 53
+Info (12128): Elaborating entity "Paddle_Position" for hierarchy "Paddle_Position:Paddle_1_Y" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 229
+Warning (10230): Verilog HDL assignment warning at Paddle_Position.v(18): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v Line: 18
+Warning (10230): Verilog HDL assignment warning at Paddle_Position.v(38): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v Line: 38
+Warning (10230): Verilog HDL assignment warning at Paddle_Position.v(53): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v Line: 53
+Info (12128): Elaborating entity "Paddle_Position" for hierarchy "Paddle_Position:Paddle_2_X" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 241
+Warning (10230): Verilog HDL assignment warning at Paddle_Position.v(18): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v Line: 18
+Warning (10230): Verilog HDL assignment warning at Paddle_Position.v(38): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v Line: 38
+Warning (10230): Verilog HDL assignment warning at Paddle_Position.v(53): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Paddle_Position.v Line: 53
+Info (12128): Elaborating entity "Ball_Position" for hierarchy "Ball_Position:Ball_X" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 269
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(23): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 23
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(55): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 55
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(67): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 67
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(81): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 81
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(88): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 88
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(108): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 108
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(127): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 127
+Info (12128): Elaborating entity "Ball_Position" for hierarchy "Ball_Position:Ball_Y" File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 285
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(23): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 23
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(55): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 55
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(67): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 67
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(81): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 81
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(88): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 88
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(108): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 108
+Warning (10230): Verilog HDL assignment warning at Ball_Position.v(127): truncated value with size 32 to match size of target (11) File: C:/intelFPGA_lite/20.1/Pong_Game/Ball_Position.v Line: 127
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "o_Sync" is stuck at GND File: C:/intelFPGA_lite/20.1/Pong_Game/Pong_Game.v Line: 30
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1152 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 29 output pins
+    Info (21061): Implemented 1119 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 55 warnings
+    Info: Peak virtual memory: 4888 megabytes
+    Info: Processing ended: Mon Feb 28 18:02:52 2022
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:20
+
+
